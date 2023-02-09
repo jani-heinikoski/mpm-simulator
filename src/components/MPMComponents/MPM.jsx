@@ -20,7 +20,9 @@ import toBinaryString from "../../utility/toBinaryString";
 import isEnoughBits from "../../utility/isEnoughBits";
 
 const MPM = ({ program, onEditProgram }) => {
-    useEffect(() => window.scrollTo({ top: 0 }), []);
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
 
     const [showErrorModal, setShowErrorModal] = useState(false);
 

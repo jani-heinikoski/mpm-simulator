@@ -17,12 +17,9 @@ import ProgramManagerModal from "./ProgramManagerModal";
 import controlBitDescriptions from "../../utility/controlBitDescriptions";
 
 const Editor = (props) => {
-    useEffect(() => window.scrollTo({ top: 0 }), []);
-
-    window.onbeforeunload = (e) => {
-        console.log(e);
-        return "Please press the Logout button to logout.";
-    };
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
 
     const [program, setProgram] = useState(props.program);
 
