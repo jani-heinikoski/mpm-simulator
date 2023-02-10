@@ -13,6 +13,7 @@ import Table from "react-bootstrap/Table";
 import HorizontalDivider from "../HorizontalDivider";
 import DismissibleAlert from "../DismissibleAlert";
 import ProgramManagerModal from "./ProgramManagerModal";
+import InitializeRegistersModal from "./InitializeRegistersModal";
 
 import controlBitDescriptions from "../../utility/controlBitDescriptions";
 
@@ -24,7 +25,9 @@ const Editor = (props) => {
     const [program, setProgram] = useState(props.program);
 
     const [instructionAddr, setInstructionAddr] = useState(NaN);
-    const [instruction, setInstruction] = useState(props.instruction);
+    const [instruction, setInstruction] = useState(
+        Array.from({ length: 22 }).map(() => false)
+    );
 
     const [showAlert, setShowAlert] = useState(false);
     const [alertHeading, setAlertHeading] = useState("");
@@ -32,6 +35,10 @@ const Editor = (props) => {
     const [alertVariant, setAlertVariant] = useState("success");
 
     const [showProgramManager, setShowProgramManager] = useState(false);
+    const [showInitializeRegistersModal, setShowInitializeRegistersModal] =
+        useState(false);
+
+    const [registers, setRegisters] = useState(props.registers);
 
     const clearSelections = () => {
         setInstruction(Array.from({ length: 22 }).map(() => false));
@@ -229,8 +236,7 @@ const Editor = (props) => {
                     variant="outline-success"
                     size="lg"
                     onClick={() => {
-                        props.onSimulateProgram(program);
-                        props.saveInstruction(instruction);
+                        props.onSimulateProgram(program, registers);
                     }}
                 >
                     Simulate Program
@@ -249,6 +255,21 @@ const Editor = (props) => {
                     currentProgram={program}
                     onHide={() => setShowProgramManager(false)}
                     onLoadProgram={(p) => setProgram(p)}
+                />
+                <Button
+                    variant="outline-primary"
+                    size="lg"
+                    onClick={() => {
+                        setShowInitializeRegistersModal(true);
+                    }}
+                >
+                    Initialize registers
+                </Button>
+                <InitializeRegistersModal
+                    initializeRegisters={(registers) => setRegisters(registers)}
+                    onHide={() => setShowInitializeRegistersModal(false)}
+                    show={showInitializeRegistersModal}
+                    initialState={registers}
                 />
             </Stack>
             <HorizontalDivider />

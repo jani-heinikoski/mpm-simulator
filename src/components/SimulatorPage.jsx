@@ -11,16 +11,16 @@ const SIMULATE = "simulate";
 const SimulatorPage = () => {
     const [mode, setMode] = useState(EDIT);
     const [program, setProgram] = useState();
-    // Used to save the instruction's state when changing between simulator and editor
-    const [instruction, setInstruction] = useState();
+    const [registers, setRegisters] = useState();
 
     /**
      * Displays the MPM simulator with program as its input
-     * @param {String[]} program
+     * @param {String[]} p program
+     * @param {Object} r registers
      */
-    const onSimulateProgram = (program, instruction) => {
-        setProgram(program);
-        setInstruction(instruction);
+    const onSimulateProgram = (p, r) => {
+        setProgram(p);
+        setRegisters(r);
         setMode(SIMULATE);
     };
 
@@ -36,14 +36,15 @@ const SimulatorPage = () => {
             {mode === EDIT ? (
                 <Editor
                     onSimulateProgram={onSimulateProgram}
-                    saveInstruction={(instruction) =>
-                        setInstruction(instruction)
-                    }
                     program={program}
-                    instruction={instruction}
+                    registers={registers}
                 />
             ) : (
-                <MPM onEditProgram={onEditProgram} program={program} />
+                <MPM
+                    onEditProgram={onEditProgram}
+                    program={program}
+                    initialRegisterValues={registers}
+                />
             )}
         </Container>
     );
