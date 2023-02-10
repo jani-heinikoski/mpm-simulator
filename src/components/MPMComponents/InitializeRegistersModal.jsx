@@ -166,6 +166,16 @@ InitializeRegistersModal.propTypes = {
     show: PropTypes.bool,
     onHide: PropTypes.func,
     initializeRegisters: PropTypes.func,
+    initialState: PropTypes.shape({
+        A: PropTypes.number,
+        B: PropTypes.number,
+        C: PropTypes.number,
+        D: PropTypes.number,
+    }),
+};
+
+InitializeRegistersModal.defaultProps = {
+    initialState: { A: 0, B: 0, C: 0, D: 0 },
 };
 
 export default InitializeRegistersModal;

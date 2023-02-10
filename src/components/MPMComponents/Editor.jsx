@@ -308,11 +308,18 @@ const Editor = (props) => {
 Editor.propTypes = {
     program: PropTypes.arrayOf(PropTypes.string),
     instruction: PropTypes.arrayOf(PropTypes.bool),
+    registers: PropTypes.shape({
+        A: PropTypes.number,
+        B: PropTypes.number,
+        C: PropTypes.number,
+        D: PropTypes.number,
+    }),
 };
 
 Editor.defaultProps = {
     program: Array.from({ length: 256 }).map(() => "0".repeat(22)),
     instruction: Array.from({ length: 22 }).map(() => false),
+    registers: { A: 0, B: 0, C: 0, D: 0 },
 };
 
 export default Editor;
