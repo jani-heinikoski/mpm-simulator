@@ -19,7 +19,7 @@ import top8BitsToBase10 from "../../utility/top8BitsToBase10";
 import toBinaryString from "../../utility/toBinaryString";
 import isEnoughBits from "../../utility/isEnoughBits";
 
-const MPM = ({ program, onEditProgram }) => {
+const MPM = ({ program, onEditProgram, initialRegisterValues }) => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, []);
@@ -31,10 +31,10 @@ const MPM = ({ program, onEditProgram }) => {
 
     const [valuesBinary, setValuesBinary] = useState(false);
 
-    const [valueOfA, setValueOfA] = useState(0);
-    const [valueOfB, setValueOfB] = useState(0);
-    const [valueOfC, setValueOfC] = useState(0);
-    const [valueOfD, setValueOfD] = useState(0);
+    const [valueOfA, setValueOfA] = useState(initialRegisterValues.A);
+    const [valueOfB, setValueOfB] = useState(initialRegisterValues.B);
+    const [valueOfC, setValueOfC] = useState(initialRegisterValues.C);
+    const [valueOfD, setValueOfD] = useState(initialRegisterValues.D);
 
     const [valueOfMDR, setValueOfMDR] = useState(0);
     const [valueOfMAR, setValueOfMAR] = useState(0);
@@ -550,10 +550,17 @@ const MPM = ({ program, onEditProgram }) => {
 MPM.propTypes = {
     program: PropTypes.arrayOf(PropTypes.string),
     onEditProgram: PropTypes.func.isRequired,
+    initialRegisterValues: PropTypes.shape({
+        A: PropTypes.number,
+        B: PropTypes.number,
+        C: PropTypes.number,
+        D: PropTypes.number,
+    }),
 };
 
 MPM.defaultProps = {
     program: Array.from({ length: 256 }).map(() => "0".repeat(22)),
+    initialRegisterValues: { A: 0, B: 0, C: 0, D: 0 },
 };
 
 export default MPM;
