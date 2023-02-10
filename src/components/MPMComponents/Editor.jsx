@@ -14,6 +14,7 @@ import HorizontalDivider from "../HorizontalDivider";
 import DismissibleAlert from "../DismissibleAlert";
 import ProgramManagerModal from "./ProgramManagerModal";
 import InitializeRegistersModal from "./InitializeRegistersModal";
+import EditorReadme from "./EditorReadme";
 
 import controlBitDescriptions from "../../utility/controlBitDescriptions";
 
@@ -159,6 +160,8 @@ const Editor = (props) => {
         <Container fluid>
             <h1 className="text-center mt-4">Edit The Microprogram</h1>
             <HorizontalDivider />
+            <EditorReadme />
+            <HorizontalDivider />
             <Stack gap={4} direction="horizontal">
                 <h3>Select the instruction's control bits</h3>
                 <Button
@@ -263,7 +266,7 @@ const Editor = (props) => {
                         setShowInitializeRegistersModal(true);
                     }}
                 >
-                    Initialize registers
+                    Initialize Registers
                 </Button>
                 <InitializeRegistersModal
                     initializeRegisters={(registers) => setRegisters(registers)}
