@@ -162,7 +162,7 @@ const MPM = ({ program, onEditProgram, initialRegisterValues }) => {
     const handleParsingException = (body) => {
         displayErrorModal(
             "Parsing Exception.",
-            `${body} Further behaviour is undefined.`
+            `${body} Further behaviour is undefined. Restart the simulation by going to the microprogram editor and clicking simulate program again.`
         );
         if (finishCurrentInstruction) {
             setFinishCurrentInstruction(false);
@@ -186,7 +186,7 @@ const MPM = ({ program, onEditProgram, initialRegisterValues }) => {
         if (!isEnoughBits(overflowCandidate, nOfBits, twosComplement)) {
             displayErrorModal(
                 `Error in ${location}`,
-                `Value ${overflowCandidate} can not be represented. Further behaviour is undefined.`
+                `Value ${overflowCandidate} can not be represented. Further behaviour is undefined. Restart the simulation by going to the microprogram editor and clicking simulate program again.`
             );
             if (finishCurrentInstruction) {
                 setFinishCurrentInstruction(false);
