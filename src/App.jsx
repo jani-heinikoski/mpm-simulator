@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import MainNavbar from "./components/MainNavbar";
 import HomePage from "./components/HomePage";
@@ -9,8 +9,12 @@ function App() {
         <>
             <MainNavbar></MainNavbar>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/simulator" element={<SimulatorPage />} />
+                <Route path="/" element={<Navigate to="/mpm-simulator" />} />
+                <Route path="/mpm-simulator" element={<HomePage />} />
+                <Route
+                    path="/mpm-simulator/simulator"
+                    element={<SimulatorPage />}
+                />
             </Routes>
         </>
     );

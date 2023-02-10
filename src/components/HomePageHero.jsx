@@ -43,7 +43,7 @@ const HomePageHero = () => {
                             size="lg"
                             className="fw-bold"
                             onClick={() => {
-                                navigate("/simulator");
+                                navigate("/mpm-simulator/simulator");
                             }}
                         >
                             Take me to the simulator
