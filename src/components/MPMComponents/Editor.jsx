@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import Container from "react-bootstrap/Container";
@@ -22,6 +22,8 @@ const Editor = (props) => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, []);
+
+    const horDivAfterReadme = useRef(null);
 
     const [program, setProgram] = useState(props.program);
 
@@ -74,7 +76,7 @@ const Editor = (props) => {
             )
         );
         setInstructionAddr(addr);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToRef(horDivAfterReadme);
     };
 
     /**
@@ -156,12 +158,19 @@ const Editor = (props) => {
         setShowProgramManager(true);
     };
 
+    const scrollToRef = (ref) => {
+        const top = ref?.current?.offsetTop;
+        if (typeof top === "number") {
+            window.scrollTo({ top: top });
+        }
+    };
+
     return (
         <Container fluid>
             <h1 className="text-center mt-4">Edit The Microprogram</h1>
             <HorizontalDivider />
             <EditorReadme />
-            <HorizontalDivider />
+            <HorizontalDivider ref={horDivAfterReadme} />
             <Stack gap={4} direction="horizontal">
                 <h3>Select the instruction's control bits</h3>
                 <Button
