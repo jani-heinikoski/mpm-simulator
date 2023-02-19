@@ -19,7 +19,12 @@ import top8BitsToBase10 from "../../utility/top8BitsToBase10";
 import toBinaryString from "../../utility/toBinaryString";
 import isEnoughBits from "../../utility/isEnoughBits";
 
-const MPM = ({ program, onEditProgram, initialRegisterValues }) => {
+const MPM = ({
+    program,
+    onEditProgram,
+    initialRegisterValues,
+    initialMainMemory,
+}) => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, []);
@@ -45,9 +50,7 @@ const MPM = ({ program, onEditProgram, initialRegisterValues }) => {
     const [valueOfDC2, setValueOfDC2] = useState(0);
     const [valueOfDC3, setValueOfDC3] = useState(0);
 
-    const [mainMemory, setMainMemory] = useState(
-        Array.from({ length: 4096 }).map(() => 0)
-    );
+    const [mainMemory, setMainMemory] = useState(initialMainMemory);
 
     const [clockPhase, setClockPhase] = useState(0);
 
@@ -556,11 +559,13 @@ MPM.propTypes = {
         C: PropTypes.number,
         D: PropTypes.number,
     }),
+    initialMainMemory: PropTypes.arrayOf(PropTypes.number),
 };
 
 MPM.defaultProps = {
     program: Array.from({ length: 256 }).map(() => "0".repeat(22)),
     initialRegisterValues: { A: 0, B: 0, C: 0, D: 0 },
+    initialMainMemory: Array.from({ length: 4096 }).map(() => 0),
 };
 
 export default MPM;
