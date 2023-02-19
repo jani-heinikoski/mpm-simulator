@@ -169,7 +169,7 @@ const InitializeMainMemoryModal = ({
         if (!checkInitialValues()) {
             return;
         }
-        const initializedMainMemory = [...initialMainMemory];
+        const initializedMainMemory = Array.from({ length: 4096 }).map(() => 0);
         for (const initialValue of initializedValues) {
             initializedMainMemory[initialValue.address] = initialValue.value;
         }
