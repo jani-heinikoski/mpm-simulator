@@ -11,6 +11,9 @@ const DismissibleAlert = ({
     className,
 }) => {
     if (show) {
+        if (variant === "success") {
+            className += " text-dark";
+        }
         return (
             <Alert
                 variant={variant}
