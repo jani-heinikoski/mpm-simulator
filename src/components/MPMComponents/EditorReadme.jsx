@@ -31,14 +31,15 @@ const EditorReadme = () => {
                         your microinstructions).
                     </p>
                     <p className="fs-5">
-                        You can also give initial values for registers A-D by
-                        clicking the "Initialize Registers" -button. Note that
-                        this is not normally possible but has been added to
-                        improve user experience. Click the "Simulate Program"
-                        -button when your microprogram is ready for simulation.
-                        You can click the "Edit Microprogram" -button in the
-                        simulation view to continue working on your
-                        microprogram.
+                        You can also give initial values for registers A-D and
+                        to arbitrary main memory locations by clicking the
+                        "Initialize Registers" -button and the "Initialize Main
+                        Memory" -button respectively. Note that this is not
+                        normally possible but has been added to improve user
+                        experience. Click the "Simulate Program" -button when
+                        your microprogram is ready for simulation. You can click
+                        the "Edit Microprogram" -button in the simulation view
+                        to continue working on your microprogram.
                     </p>
                 </Col>
             </Row>
