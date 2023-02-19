@@ -14,6 +14,7 @@ import HorizontalDivider from "../HorizontalDivider";
 import DismissibleAlert from "../DismissibleAlert";
 import ProgramManagerModal from "./ProgramManagerModal";
 import InitializeRegistersModal from "./InitializeRegistersModal";
+import InitializeMainMemoryModal from "./InitializeMainMemoryModal";
 import EditorReadme from "./EditorReadme";
 
 import controlBitDescriptions from "../../utility/controlBitDescriptions";
@@ -40,8 +41,13 @@ const Editor = (props) => {
     const [showProgramManager, setShowProgramManager] = useState(false);
     const [showInitializeRegistersModal, setShowInitializeRegistersModal] =
         useState(false);
+    const [showInitializeMainMemoryModal, setShowInitializeMainMemoryModal] =
+        useState(false);
 
     const [registers, setRegisters] = useState(props.registers);
+    const [initialMainMemory, setInitialMainMemory] = useState(
+        props.initialMainMemory
+    );
 
     const clearSelections = () => {
         setInstruction(Array.from({ length: 22 }).map(() => false));
@@ -248,7 +254,11 @@ const Editor = (props) => {
                     variant="outline-success"
                     size="lg"
                     onClick={() => {
-                        props.onSimulateProgram(program, registers);
+                        props.onSimulateProgram(
+                            program,
+                            registers,
+                            initialMainMemory
+                        );
                     }}
                 >
                     Simulate Program
@@ -282,6 +292,23 @@ const Editor = (props) => {
                     onHide={() => setShowInitializeRegistersModal(false)}
                     show={showInitializeRegistersModal}
                     initialState={registers}
+                />
+                <Button
+                    variant="outline-primary"
+                    size="lg"
+                    onClick={() => {
+                        setShowInitializeMainMemoryModal(true);
+                    }}
+                >
+                    Initialize Main Memory
+                </Button>
+                <InitializeMainMemoryModal
+                    onHide={() => setShowInitializeMainMemoryModal(false)}
+                    show={showInitializeMainMemoryModal}
+                    initialMainMemory={initialMainMemory}
+                    initializeMainMemory={(mainMemory) =>
+                        setInitialMainMemory(mainMemory)
+                    }
                 />
             </Stack>
             <HorizontalDivider />
@@ -326,12 +353,14 @@ Editor.propTypes = {
         C: PropTypes.number,
         D: PropTypes.number,
     }),
+    initialMainMemory: PropTypes.arrayOf(PropTypes.number),
 };
 
 Editor.defaultProps = {
     program: Array.from({ length: 256 }).map(() => "0".repeat(22)),
     instruction: Array.from({ length: 22 }).map(() => false),
     registers: { A: 0, B: 0, C: 0, D: 0 },
+    initialMainMemory: Array.from({ length: 4096 }).map(() => 0),
 };
 
 export default Editor;
