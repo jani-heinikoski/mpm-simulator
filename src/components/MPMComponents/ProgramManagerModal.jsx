@@ -15,7 +15,9 @@ const ProgramManagerModal = ({
     currentProgram,
     onLoadProgram,
 }) => {
-    let programAsString = currentProgram?.toString().replace(/,/g, "\n");
+    const [programAsString, setProgramAsString] = useState(
+        currentProgram?.toString().replace(/,/g, "\n")
+    );
 
     const [showAlert, setShowAlert] = useState(false);
     const [alertHeading, setAlertHeading] = useState("");
@@ -59,7 +61,7 @@ const ProgramManagerModal = ({
     const onProgramChanged = (e) => {
         const targetValue = e?.target?.value;
         if (targetValue) {
-            programAsString = targetValue;
+            setProgramAsString(targetValue);
         }
     };
 
@@ -73,7 +75,6 @@ const ProgramManagerModal = ({
     const loadProgram = () => {
         try {
             const program = parseProgram(programAsString);
-            console.log(program);
             if (Array.isArray(program)) {
                 onLoadProgram(program);
                 showProgramLoadedSuccessfully();
