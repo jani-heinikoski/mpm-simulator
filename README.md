@@ -1,7 +1,7 @@
 
 # MPM Simulator
 
-This is the main code repository for the microprogrammed machine (MPM) simulator application. The simulator is based on the abstract MPM introduced in [Johdatus tietojenkäsittelytieteeseen](http://staff.cs.utu.fi/staff/jorma.boberg/Mat/JTKTMoniste_25_06_2012.pdf) by Jorma Boberg, Martti Penttonen, Tapio Salakoski, Jukka Teuhola and other members of University of Turku.
+This is the main code repository for the [microprogrammed machine (MPM) simulator application](https://jani-heinikoski.github.io/mpm-simulator/). The simulator is based on the abstract MPM introduced in [Johdatus tietojenkäsittelytieteeseen](http://staff.cs.utu.fi/staff/jorma.boberg/Mat/JTKTMoniste_25_06_2012.pdf) by Jorma Boberg, Martti Penttonen, Tapio Salakoski, Jukka Teuhola and other members of University of Turku.
 
 It has been developed as a part of [bachelor's thesis](https://lutpub.lut.fi/handle/10024/166262) for educational purposes. It is used as a teaching tool at Lappeenranta-Lahti University of Technology in Foundations of Computer Science -course.
 ## Tech Stack
