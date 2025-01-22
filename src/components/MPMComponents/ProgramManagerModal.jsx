@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Stack from "react-bootstrap/Stack";
 import Button from "react-bootstrap/Button";
@@ -16,8 +16,12 @@ const ProgramManagerModal = ({
     onLoadProgram,
 }) => {
     const [programAsString, setProgramAsString] = useState(
-        currentProgram?.toString().replace(/,/g, "\n")
+        currentProgram?.join("\n")
     );
+
+    useEffect(() => {
+        setProgramAsString(currentProgram?.join("\n"));
+    }, [currentProgram]);
 
     const [showAlert, setShowAlert] = useState(false);
     const [alertHeading, setAlertHeading] = useState("");
