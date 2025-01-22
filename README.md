@@ -23,10 +23,10 @@ Go to the project directory
   cd mpm-simulator
 ```
 
-Install dependencies
+Install dependencies (use npm ci instead of npm i to ensure reproducible builds)
 
 ```bash
-  npm install
+  npm ci
 ```
 
 Start the development server
