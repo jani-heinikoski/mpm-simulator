@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "./static/css/main.ebb41141.css",
-    "main.js": "./static/js/main.ea8b5209.js",
-    "index.html": "./index.html",
-    "main.ebb41141.css.map": "./static/css/main.ebb41141.css.map",
-    "main.ea8b5209.js.map": "./static/js/main.ea8b5209.js.map"
+    "main.css": "/mpm-simulator/static/css/main.43ffd778.css",
+    "main.js": "/mpm-simulator/static/js/main.fc505386.js",
+    "index.html": "/mpm-simulator/index.html",
+    "main.43ffd778.css.map": "/mpm-simulator/static/css/main.43ffd778.css.map",
+    "main.fc505386.js.map": "/mpm-simulator/static/js/main.fc505386.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebb41141.css",
-    "static/js/main.ea8b5209.js"
+    "static/css/main.43ffd778.css",
+    "static/js/main.fc505386.js"
   ]
 }
