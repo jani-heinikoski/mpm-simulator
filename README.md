@@ -14,7 +14,7 @@ Tested locally with Google Chrome Version 110.0.5481.78 (Official Build) (64-bit
 Clone the project
 
 ```bash
-  git clone git@github.com:jani-heinikoski/mpm-simulator.git
+  git clone https://github.com/jani-heinikoski/mpm-simulator.git
 ```
 
 Go to the project directory
